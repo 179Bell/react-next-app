@@ -12,14 +12,13 @@
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "import/order": [2, { "alphabetize": { "order": "asc"}}],
+    "import/order": [2, { "alphabetize": { "order": "asc" } }],
+    "quotes": ["single", "double"],
     "prettier/prettier": [
       "error",
       {
-        "trailingComma" :"all",
+        "trailingComma": "all",
         "endOfLine": "lf",
-        "semi": false,
-        "singleQuote": true,
         "printWidth": 80,
         "tabWitdh": 2
       }
