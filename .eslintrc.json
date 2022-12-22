@@ -13,15 +13,6 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "import/order": [2, { "alphabetize": { "order": "asc" } }],
-    "quotes": ["single", "double"],
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "all",
-        "endOfLine": "lf",
-        "printWidth": 80,
-        "tabWitdh": 2
-      }
-    ]
+    "quotes": ["single", "double"]
   }
 }
