@@ -1,14 +1,16 @@
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
-import { Responsive } from "../../../types/styles";
+import type { Responsive } from "types/styles";
 import {
+  toPropValue,
+  Space,
   Color,
   FontSize,
   LetterSpacing,
   LineHeight,
-  Space,
-  toPropValue,
-} from "../../../utils/styles";
+} from "utils/styles";
 
+// テキストバリアント
 export type TextVariant =
   | "extraSmall"
   | "small"
@@ -28,26 +30,26 @@ export type TextProps = {
   backgroundColor?: Responsive<Color>;
   width?: Responsive<string>;
   height?: Responsive<string>;
-  minHeight?: Responsive<string>;
   minWidth?: Responsive<string>;
+  minHeight?: Responsive<string>;
   display?: Responsive<string>;
   border?: Responsive<string>;
-  overFlow?: Responsive<string>;
+  overflow?: Responsive<string>;
   margin?: Responsive<Space>;
   marginTop?: Responsive<Space>;
-  marginBottom?: Responsive<Space>;
   marginRight?: Responsive<Space>;
+  marginBottom?: Responsive<Space>;
   marginLeft?: Responsive<Space>;
   padding?: Responsive<Space>;
   paddingTop?: Responsive<Space>;
-  paddingBottom?: Responsive<Space>;
   paddingRight?: Responsive<Space>;
+  paddingBottom?: Responsive<Space>;
   paddingLeft?: Responsive<Space>;
 };
 
 const variants = {
   extraSmall: {
-    fontSize: "extrasmall",
+    fontSize: "extraSmall",
     letterSpacing: 0,
     lineHeight: 0,
   },
@@ -71,8 +73,8 @@ const variants = {
     letterSpacing: 4,
     lineHeight: 4,
   },
-  extralarge: {
-    fontSize: "extralarge",
+  extraLarge: {
+    fontSize: "extraLarge",
     letterSpacing: 5,
     lineHeight: 5,
   },
@@ -80,11 +82,11 @@ const variants = {
 
 /**
  * テキスト
- * バリアント、色、タイポグラフィ、スペース関連のPropsを追加
+ * バリアント、色、タイポグラフィ、レイアウト、スペース関連のPropsを追加
  */
 const Text = styled.span<TextProps>`
   ${({ variant, fontSize, letterSpacing, lineHeight, theme }) => {
-    //バリアントのスタイルの適用
+    // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = [];
       !fontSize &&
@@ -99,7 +101,7 @@ const Text = styled.span<TextProps>`
         styles.push(
           toPropValue("line-height", variants[variant].lineHeight, theme)
         );
-      return styles.json("\n");
+      return styles.join("\n");
     }
   }}
   ${(props) => toPropValue("font-size", props.fontSize, props.theme)}
@@ -110,21 +112,21 @@ const Text = styled.span<TextProps>`
     toPropValue("background-color", props.backgroundColor, props.theme)}
   ${(props) => toPropValue("width", props.width, props.theme)}
   ${(props) => toPropValue("height", props.height, props.theme)}
-  ${(props) => toPropValue("min-height", props.minHeight, props.theme)}
   ${(props) => toPropValue("min-width", props.minWidth, props.theme)}
+  ${(props) => toPropValue("min-height", props.minHeight, props.theme)}
   ${(props) => toPropValue("display", props.display, props.theme)}
   ${(props) => toPropValue("border", props.border, props.theme)}
   ${(props) => toPropValue("overflow", props.overflow, props.theme)}
   ${(props) => toPropValue("margin", props.margin, props.theme)}
   ${(props) => toPropValue("margin-top", props.marginTop, props.theme)}
   ${(props) => toPropValue("margin-left", props.marginLeft, props.theme)}
-  ${(props) => toPropValue("margin-right", props.marginRight, props.theme)}
   ${(props) => toPropValue("margin-bottom", props.marginBottom, props.theme)}
+  ${(props) => toPropValue("margin-right", props.marginRight, props.theme)}
   ${(props) => toPropValue("padding", props.padding, props.theme)}
   ${(props) => toPropValue("padding-top", props.paddingTop, props.theme)}
   ${(props) => toPropValue("padding-left", props.paddingLeft, props.theme)}
-  ${(props) => toPropValue("padding-right", props.paddingRight, props.theme)}
   ${(props) => toPropValue("padding-bottom", props.paddingBottom, props.theme)}
+  ${(props) => toPropValue("padding-right", props.paddingRight, props.theme)}
 `;
 
 Text.defaultProps = {
